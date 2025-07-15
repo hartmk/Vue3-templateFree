@@ -1,0 +1,488 @@
+/* Dynamic Bootstrap Color Override */
+:root {
+  /* Bootstrap default colors */
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+  
+  /* Sidebar colors */
+  --sidebarText: #ffffff;
+  --sidebarBg: #2c3e50;
+  --sidebarActive: #3498db;
+  --navbarBg: #ffffff;
+  --navbarText: #333333;
+}
+
+/* Override Bootstrap classes to use CSS variables */
+.btn-primary {
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+}
+
+.btn-secondary {
+  background-color: var(--bs-secondary) !important;
+  border-color: var(--bs-secondary) !important;
+}
+
+.btn-success {
+  background-color: var(--bs-success) !important;
+  border-color: var(--bs-success) !important;
+}
+
+.btn-info {
+  background-color: var(--bs-info) !important;
+  border-color: var(--bs-info) !important;
+}
+
+.btn-warning {
+  background-color: var(--bs-warning) !important;
+  border-color: var(--bs-warning) !important;
+}
+
+.btn-danger {
+  background-color: var(--bs-danger) !important;
+  border-color: var(--bs-danger) !important;
+}
+
+.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--bs-secondary) !important;
+}
+
+.bg-success {
+  background-color: var(--bs-success) !important;
+}
+
+.bg-info {
+  background-color: var(--bs-info) !important;
+}
+
+.bg-warning {
+  background-color: var(--bs-warning) !important;
+}
+
+.bg-danger {
+  background-color: var(--bs-danger) !important;
+}
+
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+
+.text-secondary {
+  color: var(--bs-secondary) !important;
+}
+
+.text-success {
+  color: var(--bs-success) !important;
+}
+
+.text-info {
+  color: var(--bs-info) !important;
+}
+
+.text-warning {
+  color: var(--bs-warning) !important;
+}
+
+.text-danger {
+  color: var(--bs-danger) !important;
+}
+
+.border-primary {
+  border-color: var(--bs-primary) !important;
+}
+
+.border-secondary {
+  border-color: var(--bs-secondary) !important;
+}
+
+.border-success {
+  border-color: var(--bs-success) !important;
+}
+
+.border-info {
+  border-color: var(--bs-info) !important;
+}
+
+.border-warning {
+  border-color: var(--bs-warning) !important;
+}
+
+.border-danger {
+  border-color: var(--bs-danger) !important;
+}
+
+/* Card headers */
+.card-header.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+.card-header.bg-secondary {
+  background-color: var(--bs-secondary) !important;
+}
+
+.card-header.bg-success {
+  background-color: var(--bs-success) !important;
+}
+
+.card-header.bg-info {
+  background-color: var(--bs-info) !important;
+}
+
+.card-header.bg-warning {
+  background-color: var(--bs-warning) !important;
+}
+
+.card-header.bg-danger {
+  background-color: var(--bs-danger) !important;
+}
+
+/* Alert classes */
+.alert-primary {
+  background-color: var(--bs-primary-bg-subtle) !important;
+  border-color: var(--bs-primary-border-subtle) !important;
+  color: var(--bs-primary-text-emphasis) !important;
+}
+
+.alert-secondary {
+  background-color: var(--bs-secondary-bg-subtle) !important;
+  border-color: var(--bs-secondary-border-subtle) !important;
+  color: var(--bs-secondary-text-emphasis) !important;
+}
+
+.alert-success {
+  background-color: var(--bs-success-bg-subtle) !important;
+  border-color: var(--bs-success-border-subtle) !important;
+  color: var(--bs-success-text-emphasis) !important;
+}
+
+.alert-info {
+  background-color: var(--bs-info-bg-subtle) !important;
+  border-color: var(--bs-info-border-subtle) !important;
+  color: var(--bs-info-text-emphasis) !important;
+}
+
+.alert-warning {
+  background-color: var(--bs-warning-bg-subtle) !important;
+  border-color: var(--bs-warning-border-subtle) !important;
+  color: var(--bs-warning-text-emphasis) !important;
+}
+
+.alert-danger {
+  background-color: var(--bs-danger-bg-subtle) !important;
+  border-color: var(--bs-danger-border-subtle) !important;
+  color: var(--bs-danger-text-emphasis) !important;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-content {
+    flex: 1;
+}
+
+/* Gradient Button Classes - Using CSS Variables */
+.btn-gradient-primary {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-gradient-success {
+  background: linear-gradient(135deg, var(--bs-success) 0%, var(--bs-info) 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-gradient-danger {
+  background: linear-gradient(135deg, var(--bs-danger) 0%, var(--bs-warning) 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-gradient-warning {
+  background: linear-gradient(135deg, var(--bs-warning) 0%, var(--bs-success) 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-gradient-info {
+  background: linear-gradient(135deg, var(--bs-info) 0%, var(--bs-primary) 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+/* Gradient Utility Classes - Using CSS Variables */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%) !important;
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, var(--bs-success) 0%, var(--bs-info) 100%) !important;
+}
+
+/* Progress bars */
+.progress-bar {
+  background-color: var(--bs-primary) !important;
+}
+
+.progress-bar.bg-success {
+  background-color: var(--bs-success) !important;
+}
+
+.progress-bar.bg-danger {
+  background-color: var(--bs-danger) !important;
+}
+
+.progress-bar.bg-warning {
+  background-color: var(--bs-warning) !important;
+}
+
+.progress-bar.bg-info {
+  background-color: var(--bs-info) !important;
+}
+
+/* Badges */
+.badge.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+.badge.bg-secondary {
+  background-color: var(--bs-secondary) !important;
+}
+
+.badge.bg-success {
+  background-color: var(--bs-success) !important;
+}
+
+.badge.bg-danger {
+  background-color: var(--bs-danger) !important;
+}
+
+.badge.bg-warning {
+  background-color: var(--bs-warning) !important;
+}
+
+.badge.bg-info {
+  background-color: var(--bs-info) !important;
+}
+
+/* Links */
+a {
+  color: var(--bs-primary) !important;
+}
+
+a:hover {
+  color: var(--bs-primary) !important;
+  opacity: 0.8;
+}
+
+.bg-gradient-danger {
+  background: linear-gradient(135deg, var(--bs-danger) 0%, var(--bs-warning) 100%) !important;
+}
+
+.sidebar {
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+/* Force white text for all sidebar elements */
+.sidebar,
+.sidebar * {
+    color: white !important;
+}
+
+.sidebar .nav-link {
+    color: white !important;
+}
+
+.sidebar h4 {
+    color: white !important;
+}
+
+.sidebar .toggle-btn {
+    color: white !important;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-menu {
+    padding: 1rem 0;
+}
+
+.sidebar-menu .nav-link {
+    color: white !important;
+    padding: 0.75rem 1.5rem;
+    margin: 0.2rem 0;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu .nav-link:hover,
+.sidebar-menu .nav-link.active {
+    color: white !important;
+    background: rgba(255,255,255,0.1);
+    border-left: 4px solid #ffc107;
+}
+
+.main-content {
+    margin-left: 250px;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+}
+
+.main-content.expanded {
+    margin-left: 80px;
+}
+
+.navbar {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    border-radius: 15px;
+}
+
+.stat-card.primary {
+    --gradient-start: #667eea;
+    --gradient-end: #764ba2;
+}
+
+.stat-card.success {
+    --gradient-start: #56ab2f;
+    --gradient-end: #a8e6cf;
+}
+
+.stat-card.warning {
+    --gradient-start: #f093fb;
+    --gradient-end: #f5576c;
+}
+
+.stat-card.info {
+    --gradient-start: #4facfe;
+    --gradient-end: #00f2fe;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    background: white;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.notification-badge {
+    position: relative;
+}
+
+.notification-badge::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background: #dc3545;
+    border-radius: 50%;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s;
+}
+
+.fade-enter-from, .fade-leave-to {
+    opacity: 0;
+}
+
+.activity-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}

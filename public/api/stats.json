@@ -1,0 +1,32 @@
+{
+  "stats": [
+    {
+      "title": "ยอดขายวันนี้",
+      "value": "฿125,430",
+      "icon": "fas fa-dollar-sign",
+      "type": "primary",
+      "trend": { "icon": "fas fa-arrow-up", "value": 15 }
+    },
+    {
+      "title": "ออร์เดอร์ใหม่",
+      "value": "156",
+      "icon": "fas fa-shopping-cart",
+      "type": "success",
+      "trend": { "icon": "fas fa-arrow-up", "value": 8 }
+    },
+    {
+      "title": "ลูกค้าใหม่",
+      "value": "23",
+      "icon": "fas fa-users",
+      "type": "warning",
+      "trend": { "icon": "fas fa-arrow-down", "value": -3 }
+    },
+    {
+      "title": "สินค้าในคลัง",
+      "value": "1,245",
+      "icon": "fas fa-boxes",
+      "type": "info",
+      "trend": { "icon": "fas fa-arrow-up", "value": 5 }
+    }
+  ]
+}

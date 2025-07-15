@@ -1,0 +1,93 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "เสื้อยืดคอกลม Basic",
+      "sku": "TS-001",
+      "category": "เสื้อผ้า",
+      "description": "เสื้อยืดคุณภาพดี ผ้านิ่ม ใส่สบาย",
+      "price": 299,
+      "stock": 45,
+      "image": "https://f.btwcdn.com/store-35589/product/a6f66397-0c19-1e49-51ef-649404e5121d.jpg",
+      "createdAt": "2024-01-15T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "กางเกงยีนส์ Slim Fit",
+      "sku": "JN-002",
+      "category": "เสื้อผ้า",
+      "description": "กางเกงยีนส์ทรงสลิม ผ้าคุณภาพ",
+      "price": 899,
+      "stock": 23,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDy8EkqPbTMly3EsnciOFZxy1uUPwckceYCQ&s",
+      "createdAt": "2024-01-20T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "รองเท้าผ้าใบ Classic",
+      "sku": "SN-003",
+      "category": "รองเท้า",
+      "description": "รองเท้าผ้าใบคลาสสิค สไตล์เรียบง่าย",
+      "price": 1299,
+      "stock": 12,
+      "image": "https://img.lazcdn.com/g/p/2001aebd1fbc6fffa9bc0b115c4f4f34.jpg_720x720q80.jpg",
+      "createdAt": "2024-02-01T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "กระเป๋าสะพายหลัง Urban",
+      "sku": "BP-004",
+      "category": "กระเป๋า",
+      "description": "กระเป๋าสะพายหลังขนาดกลาง วัสดุกันน้ำ",
+      "price": 1599,
+      "stock": 8,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZbZnIFUnOJM8J9imfsuqrLjv33Dp8Jl7VQQ&s",
+      "createdAt": "2024-02-10T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "สร้อยคอเงินแท้",
+      "sku": "NL-005",
+      "category": "เครื่องประดับ",
+      "description": "สร้อยคอเงินแท้ 925 ดีไซน์เรียบหรู",
+      "price": 2499,
+      "stock": 0,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsD9Pr7pSzd4OxmKgJ7WebTIhC7anlQ5EWLg&s",
+      "createdAt": "2024-02-15T00:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "name": "หูฟังไร้สาย Bluetooth",
+      "sku": "HP-006",
+      "category": "อุปกรณ์กีฬา",
+      "description": "หูฟังไร้สายคุณภาพสูง เสียงใส",
+      "price": 1999,
+      "stock": 35,
+      "image": "https://image.makewebeasy.net/makeweb/m_1920x0/cY6WnQw90/DefaultData/product_pb02_black.webp?v=202405291424",
+      "createdAt": "2024-02-20T00:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "name": "เสื้อเชิ้ตผู้ชาย Business",
+      "sku": "SH-007",
+      "category": "เสื้อผ้า",
+      "description": "เสื้อเชิ้ตสำหรับทำงาน ผ้าคุณภาดี",
+      "price": 699,
+      "stock": 28,
+      "image": "https://g2000.co.th/cdn/shop/files/3612263220_01_f4e195e2-4ba8-43e0-9079-1a12495f3db0_1400x.jpg?v=1728283065",
+      "createdAt": "2024-02-25T00:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "name": "นาฬิกาข้อมือ Digital",
+      "sku": "WT-008",
+      "category": "เครื่องประดับ",
+      "description": "นาฬิกาดิจิตอล กันน้ำ ฟังก์ชันครบ",
+      "price": 3299,
+      "stock": 15,
+      "image": "https://mediam.dotlife.store/media/catalog/product/cache/3b7e899159f673788675d87d1d929a98/h/u/huawei_watch_fit_3_-_pink.001.jpeg",
+      "createdAt": "2024-03-01T00:00:00.000Z"
+    }
+  ],
+  "categories": ["เสื้อผ้า", "รองเท้า", "กระเป๋า", "เครื่องประดับ", "อุปกรณ์กีฬา"]
+}

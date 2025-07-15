@@ -1,0 +1,77 @@
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+import router from './router'
+
+// Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+// Import Bootstrap JS and make it global
+import * as bootstrap from 'bootstrap'
+window.bootstrap = bootstrap
+
+// Import FontAwesome
+import '@fortawesome/fontawesome-free/css/all.min.css'
+
+// Import ApexCharts
+import VueApexCharts from 'vue3-apexcharts'
+
+// Import Flatpickr
+import flatPickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
+
+// Import custom CSS
+import './style.css'
+
+// Import theme configuration
+import { applyTheme, loadThemeSettings, updateThemeColors } from './config/themeConfig'
+
+// Initialize theme with saved settings and force update
+const initializeTheme = () => {
+  // Clear any bad saved settings first
+  localStorage.removeItem('themeSettings')
+  
+  // Apply default theme
+  applyTheme('default')
+  
+  // Force immediate CSS variable update with correct colors
+  setTimeout(() => {
+    const root = document.documentElement
+    root.style.setProperty('--bs-primary', '#3B71CA')
+    root.style.setProperty('--bs-secondary', '#9FA6B2')
+    root.style.setProperty('--bs-success', '#14A44D')
+    root.style.setProperty('--bs-info', '#54B4D3')
+    root.style.setProperty('--bs-warning', '#E4A11B')
+    root.style.setProperty('--bs-danger', '#DC4C64')
+    root.style.setProperty('--sidebarText', '#ffffff')
+    root.style.setProperty('--navbarText', '#ffffff')
+    root.style.setProperty('--sidebarBg', '#2c2e50ff')
+    root.style.setProperty('--navbarBg', '#ffffff')
+    root.style.setProperty('--sidebarActive', '#3498db')
+
+
+    // root.style.setProperty('--bs-primary', '#0d6efd')
+    // root.style.setProperty('--bs-secondary', '#6c757d')
+    // root.style.setProperty('--bs-success', '#198754')
+    // root.style.setProperty('--bs-info', '#0dcaf0')
+    // root.style.setProperty('--bs-warning', '#ffc107')
+    // root.style.setProperty('--bs-danger', '#dc3545')
+    // root.style.setProperty('--sidebarText', '#ffffff')
+    // root.style.setProperty('--navbarText', '#ffffff')
+    // root.style.setProperty('--sidebarBg', '#2c2e50ff')
+    // root.style.setProperty('--navbarBg', '#ffffff')
+    // root.style.setProperty('--sidebarActive', '#3498db')
+  }, 100)
+}
+
+// Initialize theme
+initializeTheme()
+
+const app = createApp(App)
+const pinia = createPinia()
+
+app.use(pinia)
+app.use(router)
+app.use(VueApexCharts)
+app.component('flat-pickr', flatPickr)
+app.mount('#app')
