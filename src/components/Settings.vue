@@ -317,7 +317,7 @@ const applySettings = () => {
   updateBootstrapColors()
   
   // Apply footer settings
-  const footer = document.querySelector('.app-footer')
+  const footer = document.querySelector('footer')
   if (footer) {
     footer.style.backgroundColor = settings.value.footerBgColor
     footer.style.display = settings.value.showFooter ? 'block' : 'none'

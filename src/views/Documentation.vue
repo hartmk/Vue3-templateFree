@@ -1,5 +1,8 @@
 <template>
-  <div class="documentation-page">
+ <div class="container-fluid px-5 py-5">
+    <h2 class="mb-4">เอกสารประกอบ</h2>
+    <p>คู่มือการใช้งานสำหรับโปรเจค Vue 3 Dashboard</p>
+   <div class="documentation-page">
     <!-- Hero Section -->
     <div class="hero-section">
       <div class="hero-content">
@@ -661,6 +664,7 @@ defineProps({
     v-if="showCodeModal"
     @click="showCodeModal = false"
   ></div>
+ </div>
 </template>
 
 <script setup>

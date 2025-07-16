@@ -338,30 +338,6 @@ a:hover {
     width: 80px;
 }
 
-.sidebar-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.sidebar-menu {
-    padding: 1rem 0;
-}
-
-.sidebar-menu .nav-link {
-    color: white !important;
-    padding: 0.75rem 1.5rem;
-    margin: 0.2rem 0;
-    border-radius: 0;
-    transition: all 0.3s ease;
-}
-
-.sidebar-menu .nav-link:hover,
-.sidebar-menu .nav-link.active {
-    color: white !important;
-    background: rgba(255,255,255,0.1);
-    border-left: 4px solid #ffc107;
-}
-
 .main-content {
     margin-left: 250px;
     transition: all 0.3s ease;
@@ -416,14 +392,6 @@ a:hover {
     --gradient-end: #00f2fe;
 }
 
-.chart-container {
-    position: relative;
-    height: 300px;
-    background: white;
-    border-radius: 15px;
-    padding: 1rem;
-}
-
 .toggle-btn {
     background: none;
     border: none;
@@ -442,21 +410,6 @@ a:hover {
     justify-content: center;
     color: white;
     font-weight: bold;
-}
-
-.notification-badge {
-    position: relative;
-}
-
-.notification-badge::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 8px;
-    height: 8px;
-    background: #dc3545;
-    border-radius: 50%;
 }
 
 .fade-enter-active, .fade-leave-active {

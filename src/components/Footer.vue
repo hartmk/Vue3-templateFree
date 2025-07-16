@@ -1,5 +1,5 @@
 <template>
-  <footer class="app-footer mt-auto py-3">
+  <footer class="mt-auto py-3 bg-light border-top shadow-sm">
     <div class="container-fluid px-4">
       <div class="row align-items-center">
         <div class="col-md-6">
@@ -8,7 +8,7 @@
         <div class="col-md-6 text-md-end">
           <span class="text-muted me-3">v1.0.0</span>
           <span class="text-muted">
-            <i class="fas fa-heart text-danger"></i>
+            <i class="fas fa-heart text-danger heartbeat-animation"></i>
             Made with Vue 3 + Bootstrap
           </span>
         </div>
@@ -22,23 +22,7 @@
 </script>
 
 <style scoped>
-.app-footer {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-top: 1px solid #dee2e6;
-  font-size: 0.875rem;
-  margin-top: auto;
-  box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
-}
-
-.text-muted {
-  color: #6c757d !important;
-}
-
-.text-danger {
-  color: #dc3545 !important;
-}
-
-.fas.fa-heart {
+.heartbeat-animation {
   animation: heartbeat 1.5s ease-in-out infinite;
 }
 
@@ -58,10 +42,6 @@
   .col-md-6.text-md-end {
     text-align: center !important;
     margin-top: 0.5rem;
-  }
-  
-  .app-footer {
-    text-align: center;
   }
 }
 </style>

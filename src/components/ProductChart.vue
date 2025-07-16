@@ -5,7 +5,7 @@
         <h5 class="card-title mb-0">สัดส่วนผลิตภัณฑ์</h5>
       </div>
       <div class="card-body">
-        <div class="chart-container">
+        <div class="position-relative" style="height: 300px;">
           <canvas ref="productChart"></canvas>
         </div>
       </div>

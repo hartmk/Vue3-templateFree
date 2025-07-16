@@ -2,55 +2,60 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <div class="d-flex align-items-center">
-        <span class="site-name me-3">{{ appName }}</span>
+        <span class="fw-bold text-primary me-3 pe-3 border-end border-2">{{ appName }}</span>
         <span class="navbar-brand mb-0 h1">{{ currentPageTitle }}</span>
       </div>
       <div class="navbar-nav ms-auto d-flex flex-row align-items-center">
         <div class="nav-item dropdown me-3">
           <a 
-            class="nav-link notification-badge" 
+            class="nav-link position-relative" 
             href="#" 
             role="button"
             @click.prevent="toggleNotifications"
             :aria-expanded="isNotificationOpen"
           >
-            <i class="fas fa-bell"></i>
-            <span v-if="unreadCount > 0" class="notification-count">{{ unreadCount > 99 ? '99+' : unreadCount }}</span>
+            <i class="fas fa-bell text-secondary fs-5"></i>
+            <span v-if="unreadCount > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ unreadCount > 99 ? '99+' : unreadCount }}</span>
           </a>
           
           <!-- Notification Dropdown -->
-          <div class="notification-dropdown" :class="{ show: isNotificationOpen }">
-            <div class="notification-header">
+          <div class="dropdown-menu dropdown-menu-end p-0 shadow border-0" :class="{ show: isNotificationOpen }" style="width: 350px; max-height: 500px;">
+            <div class="p-3 bg-light border-bottom d-flex justify-content-between align-items-center rounded-top">
               <h6 class="mb-0">การแจ้งเตือน</h6>
               <small class="text-muted">{{ unreadCount }} รายการใหม่</small>
             </div>
             
-            <div class="notification-list">
+            <div class="overflow-auto" style="max-height: 300px;">
               <div 
                 v-for="notification in notifications" 
                 :key="notification.id"
-                class="notification-item"
-                :class="{ 'unread': !notification.read }"
+                class="d-flex align-items-start p-3 border-bottom position-relative"
+                :class="{ 'bg-light': !notification.read }"
                 @click="markAsRead(notification.id)"
+                style="cursor: pointer;"
               >
-                <div class="notification-icon" :class="`bg-${notification.type}`">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-white me-3" 
+                     :class="`bg-${notification.type}`" 
+                     style="width: 36px; height: 36px; font-size: 0.875rem;">
                   <i :class="notification.icon"></i>
                 </div>
-                <div class="notification-content">
-                  <div class="notification-title">{{ notification.title }}</div>
-                  <div class="notification-message">{{ notification.message }}</div>
-                  <div class="notification-time">{{ formatTime(notification.time) }}</div>
+                <div class="flex-grow-1">
+                  <div class="fw-semibold small mb-1">{{ notification.title }}</div>
+                  <div class="text-muted small mb-1" style="line-height: 1.3;">{{ notification.message }}</div>
+                  <div class="text-muted" style="font-size: 0.75rem;">{{ formatTime(notification.time) }}</div>
                 </div>
-                <div v-if="!notification.read" class="notification-dot"></div>
+                <div v-if="!notification.read" class="position-absolute top-50 end-0 translate-middle-y me-3">
+                  <span class="bg-primary rounded-circle" style="width: 8px; height: 8px; display: block;"></span>
+                </div>
               </div>
               
-              <div v-if="notifications.length === 0" class="no-notifications">
-                <i class="fas fa-bell-slash fa-2x text-muted mb-2"></i>
-                <p class="text-muted">ไม่มีการแจ้งเตือน</p>
+              <div v-if="notifications.length === 0" class="text-center py-4 text-muted">
+                <i class="fas fa-bell-slash fa-2x mb-2"></i>
+                <p class="mb-0">ไม่มีการแจ้งเตือน</p>
               </div>
             </div>
             
-            <div class="notification-footer">
+            <div class="p-3 bg-light border-top d-flex gap-2 rounded-bottom">
               <button class="btn btn-sm btn-outline-primary" @click="markAllAsRead">
                 อ่านทั้งหมด
               </button>
@@ -68,11 +73,11 @@
             @click.prevent="toggleDropdown"
             :aria-expanded="isDropdownOpen"
           >
-            <div class="user-avatar me-2">
+            <div class="rounded-circle overflow-hidden border border-2 border-light" style="width: 32px; height: 32px;">
               <img 
                 :src="user?.avatar || defaultAvatar" 
                 :alt="user?.name || 'ผู้ใช้'"
-                class="avatar-img"
+                class="w-100 h-100 object-fit-cover"
                 @error="handleImageError"
               >
             </div>
@@ -266,228 +271,16 @@ const handleLogout = async () => {
   padding: 0.5rem 1rem;
 }
 
-.site-name {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--bs-primary);
-  background: linear-gradient(135deg, var(--bs-primary) 0%, var(--bs-info) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  border-right: 2px solid #e9ecef;
-  padding-right: 1rem;
-}
-
 .navbar-brand {
   font-weight: 600;
   color: #333;
   font-size: 1.1rem;
 }
 
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  background: var(--gradient-primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 0.875rem;
-  overflow: hidden;
-  border: 2px solid #e3e6f0;
-  transition: all 0.3s ease;
-}
-
-.user-avatar:hover {
-  border-color: var(--bs-primary);
-  transform: scale(1.05);
-}
-
-.avatar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.notification-badge {
-  position: relative;
-  color: #6c757d;
-  font-size: 1.1rem;
-  transition: color 0.2s ease;
-}
-
-.notification-badge:hover {
-  color: var(--bs-primary);
-}
-
-.notification-badge::after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 8px;
-  height: 8px;
-  background: #dc3545;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-.notification-count {
-  position: absolute;
-  top: -5px;
-  right: -8px;
-  background: #dc3545;
-  color: white;
-  border-radius: 10px;
-  padding: 2px 6px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  min-width: 18px;
-  text-align: center;
-  line-height: 1;
-}
-
-.notification-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  width: 350px;
-  max-height: 500px;
-  z-index: 1050;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  border: 1px solid #dee2e6;
-}
-
-.notification-dropdown.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.notification-header {
-  padding: 1rem;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f8f9fa;
-  border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.notification-list {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.notification-item {
-  display: flex;
-  align-items: flex-start;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #f0f0f0;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  position: relative;
-}
-
-.notification-item:hover {
-  background-color: #f8f9fa;
-}
-
-.notification-item.unread {
-  background-color: #f0f8ff;
-}
-
-.notification-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.75rem;
-  color: white;
-  font-size: 0.875rem;
-  flex-shrink: 0;
-}
-
-.notification-content {
-  flex: 1;
-}
-
-.notification-title {
-  font-weight: 600;
-  font-size: 0.875rem;
-  margin-bottom: 0.25rem;
-  color: #333;
-}
-
-.notification-message {
-  font-size: 0.8rem;
-  color: #666;
-  margin-bottom: 0.25rem;
-  line-height: 1.3;
-}
-
-.notification-time {
-  font-size: 0.75rem;
-  color: #999;
-}
-
-.notification-dot {
-  width: 8px;
-  height: 8px;
-  background: #007bff;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-}
-
-.notification-footer {
-  padding: 0.75rem 1rem;
-  border-top: 1px solid #eee;
-  display: flex;
-  gap: 0.5rem;
-  background: #f8f9fa;
-  border-radius: 0 0 0.5rem 0.5rem;
-}
-
-.no-notifications {
-  text-align: center;
-  padding: 2rem 1rem;
-  color: #6c757d;
-}
-
-.bg-success {
-  background-color: #198754 !important;
-}
-
-.bg-info {
-  background-color: #0dcaf0 !important;
-}
-
-.bg-warning {
-  background-color: #ffc107 !important;
-}
-
-.bg-danger {
-  background-color: #dc3545 !important;
-}
-
 .dropdown-menu {
   border-radius: 0.5rem;
   border: none;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   margin-top: 0.5rem;
   opacity: 0;
   visibility: hidden;
