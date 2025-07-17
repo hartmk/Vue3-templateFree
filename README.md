@@ -2,6 +2,9 @@
 
 🚀 Modern, responsive dashboard template built with Vue 3, Bootstrap 5, Pinia, and SweetAlert2.
 
+## Demo
+- http://localhost:3000
+
 ## ✨ Features
 
 - 🎨 **Custom Bootstrap Theme** - Beautiful gradient colors and animations
