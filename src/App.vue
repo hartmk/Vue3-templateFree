@@ -103,6 +103,21 @@ const menuItems = ref([
     ]
   },
   { 
+    id: 'widgets', 
+    name: 'Widgets', 
+    icon: 'fas fa-th',
+    children: [
+      { id: 'card-widgets', name: 'Card Widgets', icon: 'fas fa-id-card', route: '/widgets/cards' },
+      { id: 'progress-widgets', name: 'Progress Widgets', icon: 'fas fa-tasks', route: '/widgets/progress' },
+      { id: 'todo-widgets', name: 'Todo Widgets', icon: 'fas fa-list-check', route: '/widgets/todo' },
+      { id: 'weather-widgets', name: 'Weather Widgets', icon: 'fas fa-cloud-sun', route: '/widgets/weather' },
+      { id: 'notification-widgets', name: 'Notification Widgets', icon: 'fas fa-bell', route: '/widgets/notifications' },
+      { id: 'calendar-widgets', name: 'Calendar Widgets', icon: 'fas fa-calendar', route: '/widgets/calendar' },
+      { id: 'chart-widgets', name: 'Chart Widgets', icon: 'fas fa-chart-bar', route: '/widgets/charts' },
+      { id: 'social-widgets', name: 'Social Widgets', icon: 'fas fa-share-alt', route: '/widgets/social' }
+    ]
+  },
+  { 
     id: 'apps', 
     name: 'Apps', 
     icon: 'fas fa-th-large',

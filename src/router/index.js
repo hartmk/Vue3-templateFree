@@ -23,6 +23,16 @@ const Kanban = () => import('../views/Kanban.vue')
 const Cards = () => import('../views/Cards.vue')
 const Tables = () => import('../views/Tables.vue')
 
+// Widget components
+const CardWidgets = () => import('../views/widgets/CardWidgets.vue')
+const ProgressWidgets = () => import('../views/widgets/ProgressWidgets.vue')
+const TodoWidgets = () => import('../views/widgets/TodoWidgets.vue')
+const WeatherWidgets = () => import('../views/widgets/WeatherWidgets.vue')
+const NotificationWidgets = () => import('../views/widgets/NotificationWidgets.vue')
+const CalendarWidgets = () => import('../views/widgets/CalendarWidgets.vue')
+const ChartWidgets = () => import('../views/widgets/ChartWidgets.vue')
+const SocialWidgets = () => import('../views/widgets/SocialWidgets.vue')
+
 const routes = [
   {
     path: '/login',
@@ -310,6 +320,95 @@ const routes = [
       title: 'Documentation',
       icon: 'fas fa-book',
       breadcrumb: 'Documentation'
+    }
+  },
+  // Widget Routes
+  {
+    path: '/widgets/cards',
+    name: 'CardWidgets',
+    component: CardWidgets,
+    meta: { 
+      requiresAuth: true,
+      title: 'Card Widgets',
+      icon: 'fas fa-id-card',
+      breadcrumb: 'Card Widgets'
+    }
+  },
+  {
+    path: '/widgets/progress',
+    name: 'ProgressWidgets',
+    component: ProgressWidgets,
+    meta: { 
+      requiresAuth: true,
+      title: 'Progress Widgets',
+      icon: 'fas fa-tasks',
+      breadcrumb: 'Progress Widgets'
+    }
+  },
+  {
+    path: '/widgets/todo',
+    name: 'TodoWidgets',
+    component: TodoWidgets,
+    meta: { 
+      requiresAuth: true,
+      title: 'Todo Widgets',
+      icon: 'fas fa-check-square',
+      breadcrumb: 'Todo Widgets'
+    }
+  },
+  {
+    path: '/widgets/weather',
+    name: 'WeatherWidgets',
+    component: WeatherWidgets,
+    meta: { 
+      requiresAuth: true,
+      title: 'Weather Widgets',
+      icon: 'fas fa-cloud-sun',
+      breadcrumb: 'Weather Widgets'
+    }
+  },
+  {
+    path: '/widgets/notifications',
+    name: 'NotificationWidgets',
+    component: NotificationWidgets,
+    meta: { 
+      requiresAuth: true,
+      title: 'Notification Widgets',
+      icon: 'fas fa-bell',
+      breadcrumb: 'Notification Widgets'
+    }
+  },
+  {
+    path: '/widgets/calendar',
+    name: 'CalendarWidgets',
+    component: CalendarWidgets,
+    meta: { 
+      requiresAuth: true,
+      title: 'Calendar Widgets',
+      icon: 'fas fa-calendar-alt',
+      breadcrumb: 'Calendar Widgets'
+    }
+  },
+  {
+    path: '/widgets/charts',
+    name: 'ChartWidgets',
+    component: ChartWidgets,
+    meta: { 
+      requiresAuth: true,
+      title: 'Chart Widgets',
+      icon: 'fas fa-chart-bar',
+      breadcrumb: 'Chart Widgets'
+    }
+  },
+  {
+    path: '/widgets/social',
+    name: 'SocialWidgets',
+    component: SocialWidgets,
+    meta: { 
+      requiresAuth: true,
+      title: 'Social Widgets',
+      icon: 'fas fa-users',
+      breadcrumb: 'Social Widgets'
     }
   },
   {

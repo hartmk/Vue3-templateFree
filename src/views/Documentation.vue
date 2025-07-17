@@ -46,6 +46,9 @@
           <a class="nav-link" :class="{ active: activeSection === 'components' }" @click="scrollToSection('components')">
             <i class="fas fa-puzzle-piece me-1"></i>Components
           </a>
+          <a class="nav-link" :class="{ active: activeSection === 'widgets' }" @click="scrollToSection('widgets')">
+            <i class="fas fa-th me-1"></i>Widgets
+          </a>
           <a class="nav-link" :class="{ active: activeSection === 'customization' }" @click="scrollToSection('customization')">
             <i class="fas fa-palette me-1"></i>ปรับแต่ง
           </a>
@@ -433,6 +436,51 @@ VITE_GOOGLE_MAPS_API_KEY="your-google-maps-key"</code></pre>
                 <button class="btn btn-sm btn-outline-primary" @click="showComponentCode(component)">
                   <i class="fas fa-code me-1"></i>ดูโค้ด
                 </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Widgets Section -->
+        <section id="widgets" class="doc-section">
+          <div class="section-header">
+            <h2><i class="fas fa-th me-3"></i>Widgets</h2>
+            <p>Widget และตัวอย่างการใช้งานสำหรับ Dashboard</p>
+          </div>
+
+          <div class="widgets-grid">
+            <div class="widget-card" v-for="widget in widgets" :key="widget.name">
+              <div class="widget-preview">
+                <i :class="widget.icon"></i>
+              </div>
+              <div class="widget-info">
+                <h4>{{ widget.name }}</h4>
+                <p>{{ widget.description }}</p>
+                <div class="widget-tags">
+                  <span v-for="tag in widget.tags" :key="tag" class="tag">{{ tag }}</span>
+                </div>
+                <button class="btn btn-sm btn-outline-primary" @click="showWidgetCode(widget)">
+                  <i class="fas fa-code me-1"></i>ดูโค้ด
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Widget Categories -->
+          <div class="widget-categories mt-5">
+            <h3 class="mb-4">หมวดหมู่ Widget</h3>
+            <div class="row">
+              <div class="col-lg-4" v-for="category in widgetCategories" :key="category.name">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i :class="category.icon"></i>
+                  </div>
+                  <h5>{{ category.name }}</h5>
+                  <p>{{ category.description }}</p>
+                  <ul class="category-widgets">
+                    <li v-for="widget in category.widgets" :key="widget">{{ widget }}</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -1006,6 +1054,84 @@ const icons = ref([
   { name: 'ข้อความ', class: 'fas fa-envelope' },
   { name: 'แจ้งเตือน', class: 'fas fa-bell' }
 ])
+
+const widgets = ref([
+  {
+    name: 'Card Widget',
+    description: 'การ์ดแสดงข้อมูลสถิติต่างๆ',
+    icon: 'fas fa-id-card',
+    tags: ['Card', 'Statistics', 'Display']
+  },
+  {
+    name: 'Progress Widget', 
+    description: 'แสดง Progress Bar และ Circle Progress',
+    icon: 'fas fa-tasks',
+    tags: ['Progress', 'Loading', 'Percentage']
+  },
+  {
+    name: 'Todo Widget',
+    description: 'Widget รายการงานที่ต้องทำ', 
+    icon: 'fas fa-list-check',
+    tags: ['Todo', 'Task', 'Checklist']
+  },
+  {
+    name: 'Weather Widget',
+    description: 'Widget แสดงสภาพอากาศ',
+    icon: 'fas fa-cloud-sun', 
+    tags: ['Weather', 'Temperature', 'Forecast']
+  },
+  {
+    name: 'Notification Widget',
+    description: 'Widget แสดงการแจ้งเตือนและข้อความ',
+    icon: 'fas fa-bell',
+    tags: ['Notification', 'Alert', 'Message']
+  },
+  {
+    name: 'Calendar Widget',
+    description: 'Widget ปฏิทินแสดงกิจกรรมและนัดหมาย',
+    icon: 'fas fa-calendar',
+    tags: ['Calendar', 'Event', 'Schedule']
+  }
+])
+
+const widgetCategories = ref([
+  {
+    name: 'Data Display',
+    description: 'Widgets สำหรับแสดงข้อมูลและสถิติ',
+    icon: 'fas fa-chart-bar',
+    widgets: ['Card Widget', 'Progress Widget', 'Charts Widget', 'Table Widget']
+  },
+  {
+    name: 'User Interface',
+    description: 'Widgets สำหรับการโต้ตอบกับผู้ใช้',
+    icon: 'fas fa-mouse-pointer',
+    widgets: ['Button Widget', 'Form Widget', 'Modal Widget', 'Dropdown Widget']
+  },
+  {
+    name: 'Communication',
+    description: 'Widgets สำหรับการสื่อสารและแจ้งเตือน',
+    icon: 'fas fa-comments',
+    widgets: ['Notification Widget', 'Chat Widget', 'Message Widget', 'Alert Widget']
+  },
+  {
+    name: 'Productivity',
+    description: 'Widgets สำหรับเพิ่มประสิทธิภาพการทำงาน',
+    icon: 'fas fa-tasks',
+    widgets: ['Todo Widget', 'Calendar Widget', 'Timer Widget', 'Notes Widget']
+  },
+  {
+    name: 'Media',
+    description: 'Widgets สำหรับจัดการสื่อต่างๆ',
+    icon: 'fas fa-image',
+    widgets: ['Image Gallery', 'Video Player', 'Audio Player', 'File Upload']
+  },
+  {
+    name: 'External',
+    description: 'Widgets ที่เชื่อมต่อกับบริการภายนอก',
+    icon: 'fas fa-globe',
+    widgets: ['Weather Widget', 'Map Widget', 'Social Media', 'API Widget']
+  }
+])
 <\/script>
 
 <style scoped>
@@ -1091,6 +1217,12 @@ const showComponentCode = (component) => {
   showCodeModal.value = true
 }
 
+const showWidgetCode = (widget) => {
+  selectedComponent.value = widget
+  activeCodeTab.value = 'template'
+  showCodeModal.value = true
+}
+
 const copyCodeToClipboard = async (code) => {
   try {
     await navigator.clipboard.writeText(code)
@@ -1118,7 +1250,7 @@ const copyAllCode = async () => {
 
 // Scroll detection
 const handleScroll = () => {
-  const sections = ['overview', 'installation', 'configuration', 'getting-started', 'components', 'customization', 'api']
+  const sections = ['overview', 'installation', 'configuration', 'getting-started', 'components', 'widgets', 'customization', 'api']
   
   for (const section of sections) {
     const element = document.getElementById(section)
@@ -1882,5 +2014,277 @@ onUnmounted(() => {
   border-top: 1px solid #dee2e6;
   background: #f8f9fa;
   border-radius: 0 0 1rem 1rem;
+}
+
+/* Widgets Styles */
+.widgets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.widget-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease;
+}
+
+.widget-card:hover {
+  transform: translateY(-2px);
+}
+
+.widget-preview {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.widget-preview i {
+  font-size: 3rem;
+  color: #667eea;
+}
+
+.widget-info h4 {
+  margin-bottom: 0.5rem;
+  color: #2d3748;
+}
+
+.widget-demo {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  border: 1px solid #e9ecef;
+}
+
+.widget-tags {
+  margin: 1rem 0;
+}
+
+.widget-tags .tag {
+  display: inline-block;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+}
+
+/* Widget Categories */
+.widget-categories {
+  margin-top: 4rem;
+}
+
+.category-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+  text-align: center;
+  height: 100%;
+}
+
+.category-icon {
+  font-size: 2.5rem;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.category-card h5 {
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.category-widgets {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.category-widgets li {
+  padding: 0.25rem 0;
+  color: #718096;
+  font-size: 0.875rem;
+}
+
+/* Demo Widget Styles */
+.demo-card .card {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.demo-progress {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.demo-progress .progress {
+  height: 8px;
+}
+
+.demo-progress .circle-progress {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.demo-progress .progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.demo-todo .card {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.demo-todo .todo-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.demo-todo .todo-item:hover {
+  background: #f8f9fa;
+}
+
+.demo-todo .todo-item.completed .todo-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.demo-todo .todo-item i {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.demo-todo .todo-text {
+  flex: 1;
+  font-size: 0.875rem;
+}
+
+.demo-weather .card {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.demo-notification .card {
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.demo-notification .notification-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.demo-notification .notification-item:hover {
+  background: #f8f9fa;
+}
+
+.demo-notification .notification-item.new {
+  background: rgba(102, 126, 234, 0.05);
+  border-left: 3px solid #667eea;
+}
+
+.demo-notification .notification-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.demo-notification .notification-icon i {
+  color: white;
+  font-size: 0.875rem;
+}
+
+.demo-notification .notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.demo-notification .notification-content strong {
+  font-size: 0.875rem;
+  color: #2d3748;
+}
+
+.demo-notification .notification-content p {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.demo-calendar .card {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.demo-calendar .calendar-mini {
+  font-size: 0.75rem;
+}
+
+.demo-calendar .calendar-header,
+.demo-calendar .calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.demo-calendar .calendar-header div {
+  text-align: center;
+  font-weight: 600;
+  padding: 0.25rem;
+  color: #6c757d;
+}
+
+.demo-calendar .calendar-body div {
+  text-align: center;
+  padding: 0.25rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+.demo-calendar .calendar-body div:hover {
+  background: #e9ecef;
+}
+
+.demo-calendar .calendar-body div.today {
+  background: #667eea;
+  color: white;
+  font-weight: 600;
+}
+
+/* Responsive Widgets */
+@media (max-width: 768px) {
+  .widgets-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .widget-categories .row {
+    --bs-gutter-x: 1rem;
+  }
+  
+  .category-card {
+    margin-bottom: 1rem;
+  }
 }
 </style>

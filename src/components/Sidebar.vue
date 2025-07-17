@@ -13,13 +13,16 @@
       @click="closeMobileMenu"
     ></div>
     
-    <div class="d-flex justify-content-between align-items-center p-3 border-bottom border-secondary" style="height: 60px; min-height: 60px;">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center p-3 border-bottom border-secondary sidebar-header">
       <h4 v-show="!sidebarCollapsed" class="mb-0 text-light fw-semibold fs-6">Dashboard</h4>
       <button class="btn btn-outline-light btn-sm border-0" @click="toggleSidebar">
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <div class="py-3" style="max-height: calc(100vh - 60px); overflow-y: visible;">
+    
+    <!-- Scrollable Menu Content -->
+    <div class="sidebar-content">
       <ul class="nav flex-column">
         <li class="nav-item" v-for="item in menuItems" :key="item.id">
           <!-- Main menu item -->
@@ -233,12 +236,76 @@ watch(() => props.activeMenu, () => {
   width: 260px;
   background: linear-gradient(180deg, var(--sidebarBg, #2c3e50) 0%, #34495e 100%);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-collapsed {
   width: 70px;
   background: linear-gradient(180deg, var(--sidebarBg, #2c3e50) 0%, #34495e 100%);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  height: 60px;
+  min-height: 60px;
+  flex-shrink: 0;
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar Styling */
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+/* Fade effect for better UX */
+.sidebar-content::before {
+  content: '';
+  position: sticky;
+  top: 0;
+  height: 8px;
+  background: linear-gradient(to bottom, rgba(44, 62, 80, 1), rgba(44, 62, 80, 0));
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+}
+
+.sidebar-content::after {
+  content: '';
+  position: sticky;
+  bottom: 0;
+  height: 8px;
+  background: linear-gradient(to top, rgba(52, 73, 94, 1), rgba(52, 73, 94, 0));
+  z-index: 1;
+  pointer-events: none;
+  display: block;
 }
 
 .transition-all {
