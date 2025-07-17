@@ -20,8 +20,10 @@
           :sidebar-collapsed="sidebarCollapsed" 
           :active-menu="activeMenu" 
           :menu-items="menuItems"
+          :is-mobile-menu-open="isMobileMenuOpen"
           @toggle-sidebar="toggleSidebar" 
           @set-active-menu="setActiveMenu" 
+          @close-mobile-menu="closeMobileMenu"
         />
 
         <!-- Main Content -->
@@ -30,7 +32,8 @@
           <TopNavbar 
             :current-page-title="currentPageTitle" 
             :user="user" 
-            @logout="handleLogout" 
+            @logout="handleLogout"
+            @toggle-mobile-menu="toggleMobileMenu"
           />
 
           <!-- Page Content -->
@@ -69,31 +72,46 @@ const route = useRoute()
 const { user, isAuthenticated, isLoading, initializeAuth, logout } = useAuth()
 
 const sidebarCollapsed = ref(false)
+const isMobileMenuOpen = ref(false)
 const authLoading = ref(false) // เปลี่ยนเป็น false เลย
 
 // Menu items for navigation
 const menuItems = ref([
   { id: 'dashboard', name: 'แดชบอร์ด', icon: 'fas fa-tachometer-alt', route: '/dashboard' },
+  { id: 'analytics', name: 'รายงาน', icon: 'fas fa-chart-bar', route: '/analytics' },
+  { id: 'academy-dashboard', name: 'Academy Dashboard', icon: 'fas fa-graduation-cap', route: '/academy-dashboard' },
   { 
     id: 'ui', 
     name: 'UI Elements', 
     icon: 'fas fa-puzzle-piece',
     children: [
-      { id: 'components', name: 'UI Components', icon: 'fas fa-cube', route: '/components' },
-      { id: 'charts', name: 'Charts & Graphs', icon: 'fas fa-chart-line', route: '/charts' },
+      { id: 'alerts', name: 'Alerts', icon: 'fas fa-exclamation-triangle', route: '/alerts' },
       { id: 'apexcharts', name: 'ApexCharts', icon: 'fas fa-chart-area', route: '/apexcharts' },
-      { id: 'sweetalert', name: 'SweetAlert', icon: 'fas fa-bell', route: '/sweetalert' },
-      { id: 'forminput', name: 'Form Input', icon: 'fas fa-edit', route: '/forminput' },
-      { id: 'icons', name: 'Icons', icon: 'fas fa-icons', route: '/icons' },
+      { id: 'bootstrap-table', name: 'Bootstrap Table', icon: 'fas fa-table', route: '/bootstrap-table' },
+      { id: 'buttons', name: 'Buttons & Badges', icon: 'fas fa-square', route: '/buttons' },
+      { id: 'cards', name: 'Cards', icon: 'fas fa-id-card', route: '/cards' },
+      { id: 'charts', name: 'Charts & Graphs', icon: 'fas fa-chart-line', route: '/charts' },
+      { id: 'datatables', name: 'DataTables', icon: 'fas fa-table', route: '/datatables' },
       { id: 'datetimepicker', name: 'DateTime Picker', icon: 'fas fa-calendar-alt', route: '/datetimepicker' },
-      { id: 'modals', name: 'Modals', icon: 'fas fa-window-restore', route: '/modals' },
       { id: 'dayjs', name: 'Day.js', icon: 'fas fa-clock', route: '/dayjs' },
+      { id: 'forminput', name: 'Form Input', icon: 'fas fa-edit', route: '/forminput' },
       { id: 'googlemaps', name: 'Google Maps', icon: 'fas fa-map-marked-alt', route: '/googlemaps' },
-      { id: 'academy-dashboard', name: 'Academy Dashboard', icon: 'fas fa-graduation-cap', route: '/academy-dashboard' },
-      { id: 'datatables', name: 'DataTables', icon: 'fas fa-table', route: '/datatables' }
+      { id: 'icons', name: 'Icons', icon: 'fas fa-icons', route: '/icons' },
+      { id: 'modals', name: 'Modals', icon: 'fas fa-window-restore', route: '/modals' },
+      { id: 'sweetalert', name: 'SweetAlert', icon: 'fas fa-bell', route: '/sweetalert' },
+      { id: 'components', name: 'UI Components', icon: 'fas fa-cube', route: '/components' }
     ]
   },
-  { id: 'documentation', name: 'Documentation', icon: 'fas fa-book', route: '/documentation' },
+  { 
+    id: 'apps', 
+    name: 'Apps', 
+    icon: 'fas fa-th-large',
+    children: [
+      { id: 'chat', name: 'Chat', icon: 'fas fa-comments', route: '/chat' },
+      { id: 'calendar', name: 'Calendar', icon: 'fas fa-calendar-alt', route: '/calendar' },
+      { id: 'kanban', name: 'Kanban Board', icon: 'fas fa-columns', route: '/kanban' }
+    ]
+  },
   { 
     id: 'ecommerce', 
     name: 'E-Commerce', 
@@ -104,8 +122,8 @@ const menuItems = ref([
       { id: 'customers', name: 'ลูกค้า', icon: 'fas fa-users', route: '/customers' }
     ]
   },
-  { id: 'analytics', name: 'รายงาน', icon: 'fas fa-chart-bar', route: '/analytics' },
-  { id: 'settings', name: 'ตั้งค่า', icon: 'fas fa-cog', route: '/settings' }
+  { id: 'settings', name: 'ตั้งค่า', icon: 'fas fa-cog', route: '/settings' },
+  { id: 'documentation', name: 'Documentation', icon: 'fas fa-book', route: '/documentation' }
 ])
 
 // Get active menu based on current route
@@ -167,6 +185,14 @@ const toggleSidebar = () => {
   sidebarCollapsed.value = !sidebarCollapsed.value
 }
 
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
+}
+
 const setActiveMenu = (menuId) => {
   const menuItem = menuItems.value.find(item => item.id === menuId)
   if (menuItem && menuItem.route) {
@@ -219,13 +245,20 @@ watch(isAuthenticated, (newValue) => {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 770px) {
+  .main-content,
+  .main-content.expanded {
+    margin-left: 0 !important;
+  }
+}
+
+@media (min-width: 771px) {
   .main-content {
-    margin-left: 0;
+    margin-left: 260px; /* เว้นระยะสำหรับ sidebar */
   }
   
   .main-content.expanded {
-    margin-left: 0;
+    margin-left: 70px; /* เมื่อ sidebar ย่อ */
   }
 }
 </style>

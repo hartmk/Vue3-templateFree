@@ -654,12 +654,432 @@
       </div>
     </div>
 
+    <!-- Enhanced Form Controls Section -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <h3 class="text-primary mb-3">
+          <i class="fas fa-check-double me-2"></i>Enhanced Form Controls
+        </h3>
+        <p class="text-muted">ตัวอย่างที่ครอบคลุมของ Radio Buttons, Checkboxes, Select Dropdowns และ Switch Controls</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Enhanced Radio Buttons -->
+      <div class="col-lg-6 mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+              <i class="fas fa-dot-circle me-2"></i>Radio Buttons
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Basic Radio Group -->
+            <div class="mb-4">
+              <h6 class="text-primary mb-3">ประเภทบัญชี</h6>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="accountType" id="personal" value="personal" v-model="enhancedForm.accountType">
+                <label class="form-check-label" for="personal">
+                  <i class="fas fa-user me-2 text-info"></i>บัญชีส่วนตัว
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="accountType" id="business" value="business" v-model="enhancedForm.accountType">
+                <label class="form-check-label" for="business">
+                  <i class="fas fa-building me-2 text-success"></i>บัญชีธุรกิจ
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="accountType" id="premium" value="premium" v-model="enhancedForm.accountType">
+                <label class="form-check-label" for="premium">
+                  <i class="fas fa-crown me-2 text-warning"></i>บัญชีพรีเมียม
+                </label>
+              </div>
+            </div>
+
+            <!-- Inline Radio with Cards -->
+            <div class="mb-4">
+              <h6 class="text-primary mb-3">แผนการชำระเงิน</h6>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <input type="radio" class="btn-check" name="paymentPlan" id="monthly" value="monthly" v-model="enhancedForm.paymentPlan">
+                  <label class="btn btn-outline-primary w-100 text-center p-3" for="monthly">
+                    <div class="fw-bold">รายเดือน</div>
+                    <div class="small text-muted">฿299/เดือน</div>
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <input type="radio" class="btn-check" name="paymentPlan" id="yearly" value="yearly" v-model="enhancedForm.paymentPlan">
+                  <label class="btn btn-outline-success w-100 text-center p-3" for="yearly">
+                    <div class="fw-bold">รายปี</div>
+                    <div class="small text-muted">฿2,990/ปี</div>
+                    <span class="badge bg-success small">ประหยัด 20%</span>
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <input type="radio" class="btn-check" name="paymentPlan" id="lifetime" value="lifetime" v-model="enhancedForm.paymentPlan">
+                  <label class="btn btn-outline-warning w-100 text-center p-3" for="lifetime">
+                    <div class="fw-bold">ตลอดชีพ</div>
+                    <div class="small text-muted">฿9,999</div>
+                    <span class="badge bg-warning small">คุ้มที่สุด</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Radio with Images -->
+            <div class="mb-3">
+              <h6 class="text-primary mb-3">เลือกธีม</h6>
+              <div class="row g-2">
+                <div class="col-md-4">
+                  <input type="radio" class="btn-check" name="theme" id="lightTheme" value="light" v-model="enhancedForm.theme">
+                  <label class="btn btn-outline-secondary w-100 p-2" for="lightTheme">
+                    <div class="bg-light rounded p-2 mb-2" style="height: 60px;">
+                      <div class="bg-white rounded shadow-sm h-100 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-sun text-warning"></i>
+                      </div>
+                    </div>
+                    <small>ธีมสว่าง</small>
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <input type="radio" class="btn-check" name="theme" id="darkTheme" value="dark" v-model="enhancedForm.theme">
+                  <label class="btn btn-outline-secondary w-100 p-2" for="darkTheme">
+                    <div class="bg-dark rounded p-2 mb-2" style="height: 60px;">
+                      <div class="bg-secondary rounded h-100 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-moon text-info"></i>
+                      </div>
+                    </div>
+                    <small>ธีมมืด</small>
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <input type="radio" class="btn-check" name="theme" id="autoTheme" value="auto" v-model="enhancedForm.theme">
+                  <label class="btn btn-outline-secondary w-100 p-2" for="autoTheme">
+                    <div class="rounded p-2 mb-2" style="height: 60px; background: linear-gradient(45deg, #ffffff 50%, #333333 50%);">
+                      <div class="h-100 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-adjust"></i>
+                      </div>
+                    </div>
+                    <small>อัตโนมัติ</small>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enhanced Checkboxes -->
+      <div class="col-lg-6 mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">
+              <i class="fas fa-check-square me-2"></i>Checkboxes
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Standard Checkboxes -->
+            <div class="mb-4">
+              <h6 class="text-success mb-3">ฟีเจอร์ที่ต้องการ</h6>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="feature1" value="notifications" v-model="enhancedForm.features">
+                <label class="form-check-label" for="feature1">
+                  <i class="fas fa-bell me-2 text-primary"></i>การแจ้งเตือน
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="feature2" value="analytics" v-model="enhancedForm.features">
+                <label class="form-check-label" for="feature2">
+                  <i class="fas fa-chart-bar me-2 text-info"></i>การวิเคราะห์ข้อมูล
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="feature3" value="backup" v-model="enhancedForm.features">
+                <label class="form-check-label" for="feature3">
+                  <i class="fas fa-cloud me-2 text-secondary"></i>การสำรองข้อมูล
+                </label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="feature4" value="security" v-model="enhancedForm.features">
+                <label class="form-check-label" for="feature4">
+                  <i class="fas fa-shield-alt me-2 text-warning"></i>ความปลอดภัย
+                </label>
+              </div>
+            </div>
+
+            <!-- Toggle Style Checkboxes -->
+            <div class="mb-4">
+              <h6 class="text-success mb-3">การตั้งค่าขั้นสูง</h6>
+              <div class="form-check form-check-inline me-4">
+                <input class="form-check-input" type="checkbox" id="twoFactor" v-model="enhancedForm.twoFactor">
+                <label class="form-check-label" for="twoFactor">Two-Factor Auth</label>
+              </div>
+              <div class="form-check form-check-inline me-4">
+                <input class="form-check-input" type="checkbox" id="newsletter" v-model="enhancedForm.newsletter">
+                <label class="form-check-label" for="newsletter">Newsletter</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="marketing" v-model="enhancedForm.marketing">
+                <label class="form-check-label" for="marketing">Marketing Emails</label>
+              </div>
+            </div>
+
+            <!-- Card Style Checkboxes -->
+            <div class="mb-3">
+              <h6 class="text-success mb-3">ความสามารถ</h6>
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <input type="checkbox" class="btn-check" id="skill1" value="frontend" v-model="enhancedForm.skills">
+                  <label class="btn btn-outline-info w-100" for="skill1">
+                    <i class="fab fa-html5 me-2"></i>Frontend
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <input type="checkbox" class="btn-check" id="skill2" value="backend" v-model="enhancedForm.skills">
+                  <label class="btn btn-outline-success w-100" for="skill2">
+                    <i class="fas fa-server me-2"></i>Backend
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <input type="checkbox" class="btn-check" id="skill3" value="mobile" v-model="enhancedForm.skills">
+                  <label class="btn btn-outline-warning w-100" for="skill3">
+                    <i class="fas fa-mobile-alt me-2"></i>Mobile
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <input type="checkbox" class="btn-check" id="skill4" value="devops" v-model="enhancedForm.skills">
+                  <label class="btn btn-outline-danger w-100" for="skill4">
+                    <i class="fas fa-cogs me-2"></i>DevOps
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enhanced Select Dropdowns -->
+      <div class="col-lg-6 mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-info text-white">
+            <h5 class="mb-0">
+              <i class="fas fa-list me-2"></i>Select Dropdowns
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Basic Select -->
+            <div class="mb-3">
+              <label for="countrySelect" class="form-label">เลือกประเทศ</label>
+              <select class="form-select" id="countrySelect" v-model="enhancedForm.country">
+                <option value="">-- เลือกประเทศ --</option>
+                <option value="TH">🇹🇭 ประเทศไทย</option>
+                <option value="US">🇺🇸 สหรัฐอเมริกา</option>
+                <option value="JP">🇯🇵 ประเทศญี่ปุ่น</option>
+                <option value="KR">🇰🇷 ประเทศเกาหลีใต้</option>
+                <option value="CN">🇨🇳 ประเทศจีน</option>
+                <option value="GB">🇬🇧 สหราชอาณาจักร</option>
+              </select>
+            </div>
+
+            <!-- Multiple Select -->
+            <div class="mb-3">
+              <label for="languageSelect" class="form-label">ภาษาที่ใช้ได้</label>
+              <select class="form-select" id="languageSelect" multiple v-model="enhancedForm.languages" size="4">
+                <option value="javascript">JavaScript</option>
+                <option value="typescript">TypeScript</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="csharp">C#</option>
+                <option value="php">PHP</option>
+                <option value="go">Go</option>
+                <option value="rust">Rust</option>
+              </select>
+              <div class="form-text">กด Ctrl (หรือ Cmd) เพื่อเลือกหลายภาษา</div>
+            </div>
+
+            <!-- Grouped Select -->
+            <div class="mb-3">
+              <label for="categorySelect" class="form-label">หมวดหมู่สินค้า</label>
+              <select class="form-select" id="categorySelect" v-model="enhancedForm.category">
+                <option value="">-- เลือกหมวดหมู่ --</option>
+                <optgroup label="เทคโนโลยี">
+                  <option value="computers">คอมพิวเตอร์</option>
+                  <option value="smartphones">สมาร์ทโฟน</option>
+                  <option value="tablets">แท็บเล็ต</option>
+                </optgroup>
+                <optgroup label="แฟชั่น">
+                  <option value="clothing">เสื้อผ้า</option>
+                  <option value="shoes">รองเท้า</option>
+                  <option value="accessories">เครื่องประดับ</option>
+                </optgroup>
+                <optgroup label="ของใช้ในบ้าน">
+                  <option value="furniture">เฟอร์นิเจอร์</option>
+                  <option value="appliances">เครื่องใช้ไฟฟ้า</option>
+                  <option value="decoration">ของตะแต่งบ้าน</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Select with Custom Styling -->
+            <div class="mb-3">
+              <label for="prioritySelect" class="form-label">ระดับความสำคัญ</label>
+              <select class="form-select" id="prioritySelect" v-model="enhancedForm.priority">
+                <option value="">-- เลือกระดับ --</option>
+                <option value="low" class="text-success">🟢 ต่ำ</option>
+                <option value="medium" class="text-warning">🟡 ปานกลาง</option>
+                <option value="high" class="text-danger">🔴 สูง</option>
+                <option value="urgent" class="text-danger fw-bold">🚨 เร่งด่วน</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Switch Controls -->
+      <div class="col-lg-6 mb-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0">
+              <i class="fas fa-toggle-on me-2"></i>Switch Controls
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Basic Switches -->
+            <div class="mb-4">
+              <h6 class="text-warning mb-3">การตั้งค่าทั่วไป</h6>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="notificationSwitch" v-model="enhancedForm.settings.notifications">
+                <label class="form-check-label" for="notificationSwitch">
+                  <i class="fas fa-bell me-2"></i>เปิดการแจ้งเตือน
+                </label>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch" v-model="enhancedForm.settings.darkMode">
+                <label class="form-check-label" for="darkModeSwitch">
+                  <i class="fas fa-moon me-2"></i>โหมดมืด
+                </label>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="autoSaveSwitch" v-model="enhancedForm.settings.autoSave">
+                <label class="form-check-label" for="autoSaveSwitch">
+                  <i class="fas fa-save me-2"></i>บันทึกอัตโนมัติ
+                </label>
+              </div>
+            </div>
+
+            <!-- Privacy Switches -->
+            <div class="mb-4">
+              <h6 class="text-warning mb-3">ความเป็นส่วนตัว</h6>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="profilePublicSwitch" v-model="enhancedForm.privacy.profilePublic">
+                <label class="form-check-label" for="profilePublicSwitch">
+                  <i class="fas fa-eye me-2"></i>โปรไฟล์สาธารณะ
+                </label>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="showEmailSwitch" v-model="enhancedForm.privacy.showEmail">
+                <label class="form-check-label" for="showEmailSwitch">
+                  <i class="fas fa-envelope me-2"></i>แสดงอีเมล
+                </label>
+              </div>
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="allowMessagesSwitch" v-model="enhancedForm.privacy.allowMessages">
+                <label class="form-check-label" for="allowMessagesSwitch">
+                  <i class="fas fa-comments me-2"></i>อนุญาตให้ส่งข้อความ
+                </label>
+              </div>
+            </div>
+
+            <!-- Feature Switches with Status -->
+            <div class="mb-3">
+              <h6 class="text-warning mb-3">ฟีเจอร์พิเศษ</h6>
+              <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-light rounded">
+                <div>
+                  <div class="fw-bold">Two-Factor Authentication</div>
+                  <small class="text-muted">เพิ่มความปลอดภัยให้บัญชี</small>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="twoFactorSwitch" v-model="enhancedForm.security.twoFactor">
+                </div>
+              </div>
+              
+              <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-light rounded">
+                <div>
+                  <div class="fw-bold">API Access</div>
+                  <small class="text-muted">อนุญาตการเข้าถึง API</small>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="apiAccessSwitch" v-model="enhancedForm.security.apiAccess">
+                </div>
+              </div>
+              
+              <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-light rounded">
+                <div>
+                  <div class="fw-bold">Email Verification</div>
+                  <small class="text-muted">ยืนยันอีเมลก่อนใช้งาน</small>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="emailVerificationSwitch" v-model="enhancedForm.security.emailVerification">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced Form Data Display -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0">
+              <i class="fas fa-code me-2"></i>Enhanced Form Data
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h6 class="text-primary">Selected Values</h6>
+                <div class="bg-light p-3 rounded">
+                  <div class="mb-2"><strong>Account Type:</strong> {{ enhancedForm.accountType || 'ไม่ได้เลือก' }}</div>
+                  <div class="mb-2"><strong>Payment Plan:</strong> {{ enhancedForm.paymentPlan || 'ไม่ได้เลือก' }}</div>
+                  <div class="mb-2"><strong>Theme:</strong> {{ enhancedForm.theme || 'ไม่ได้เลือก' }}</div>
+                  <div class="mb-2"><strong>Country:</strong> {{ enhancedForm.country || 'ไม่ได้เลือก' }}</div>
+                  <div class="mb-2"><strong>Priority:</strong> {{ enhancedForm.priority || 'ไม่ได้เลือก' }}</div>
+                  <div class="mb-2"><strong>Category:</strong> {{ enhancedForm.category || 'ไม่ได้เลือก' }}</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h6 class="text-success">Arrays & Objects</h6>
+                <div class="bg-light p-3 rounded">
+                  <div class="mb-2"><strong>Features:</strong> {{ enhancedForm.features.join(', ') || 'ไม่มี' }}</div>
+                  <div class="mb-2"><strong>Skills:</strong> {{ enhancedForm.skills.join(', ') || 'ไม่มี' }}</div>
+                  <div class="mb-2"><strong>Languages:</strong> {{ enhancedForm.languages.join(', ') || 'ไม่มี' }}</div>
+                  <div class="mb-2"><strong>Notifications:</strong> {{ enhancedForm.settings.notifications ? 'เปิด' : 'ปิด' }}</div>
+                  <div class="mb-2"><strong>Dark Mode:</strong> {{ enhancedForm.settings.darkMode ? 'เปิด' : 'ปิด' }}</div>
+                  <div class="mb-2"><strong>Two Factor:</strong> {{ enhancedForm.security.twoFactor ? 'เปิด' : 'ปิด' }}</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- JSON Display -->
+            <div class="mt-3">
+              <h6 class="text-info">Complete JSON Data</h6>
+              <pre class="bg-dark text-light p-3 rounded" style="max-height: 300px; overflow-y: auto;"><code>{{ JSON.stringify(enhancedForm, null, 2) }}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Form Data Display -->
     <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h5 class="mb-0">Form Data Display</h5>
+            <h5 class="mb-0">Basic Form Data Display</h5>
           </div>
           <div class="card-body">
             <div class="row">
@@ -752,6 +1172,46 @@ const inputGroups = ref({
   currency: 'THB',
   price: null,
   website: ''
+})
+
+// Enhanced Form Controls Data
+const enhancedForm = ref({
+  // Radio button values
+  accountType: '',
+  paymentPlan: '',
+  theme: '',
+  
+  // Checkbox arrays
+  features: [],
+  skills: [],
+  
+  // Switch values
+  twoFactor: false,
+  newsletter: true,
+  marketing: false,
+  
+  // Select values
+  country: '',
+  languages: [],
+  category: '',
+  priority: '',
+  
+  // Nested objects for switches
+  settings: {
+    notifications: true,
+    darkMode: false,
+    autoSave: true
+  },
+  privacy: {
+    profilePublic: true,
+    showEmail: false,
+    allowMessages: true
+  },
+  security: {
+    twoFactor: false,
+    apiAccess: false,
+    emailVerification: true
+  }
 })
 
 // UI State

@@ -7,51 +7,7 @@
       </div>
     </div>
 
-    <!-- Buttons Section -->
-    <div class="row mb-5">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header bg-primary text-white">
-            <h5 class="mb-0"><i class="fas fa-mouse-pointer me-2"></i>Buttons</h5>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <h6>Standard Buttons</h6>
-                <div class="p-3 mb-3 d-flex flex-wrap gap-2">
-                  <button class="btn btn-primary">Primary</button>
-                  <button class="btn btn-secondary">Secondary</button>
-                  <button class="btn btn-success">Success</button>
-                  <button class="btn btn-danger">Danger</button>
-                  <button class="btn btn-warning">Warning</button>
-                  <button class="btn btn-info">Info</button>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <h6>Outline Buttons</h6>
-                <div class="p-3 mb-3 d-flex flex-wrap gap-2">
-                  <button class="btn btn-outline-primary">
-                    <i class="fas fa-rocket me-2"></i>Outline Primary
-                  </button>
-                  <button class="btn btn-outline-success">
-                    <i class="fas fa-check me-2"></i>Outline Success
-                  </button>
-                  <button class="btn btn-outline-danger">
-                    <i class="fas fa-times me-2"></i>Outline Danger
-                  </button>
-                  <button class="btn btn-outline-warning">
-                    <i class="fas fa-exclamation me-2"></i>Outline Warning
-                  </button>
-                  <button class="btn btn-outline-info">
-                    <i class="fas fa-info me-2"></i>Outline Info
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Cards Section -->
     <div class="row mb-5">
@@ -98,64 +54,11 @@
       </div>
     </div>
 
-    <!-- Alerts Section -->
-    <div class="row mb-5">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-bell me-2"></i>Alerts</h5>
-          </div>
-          <div class="card-body">
-            <div class="alert alert-primary" role="alert">
-              <i class="fas fa-info-circle me-2"></i>
-              This is a primary alert with Bootstrap styling!
-            </div>
-            <div class="alert alert-success" role="alert">
-              <i class="fas fa-check-circle me-2"></i>
-              Well done! You successfully read this important alert message.
-            </div>
-            <div class="alert alert-warning" role="alert">
-              <i class="fas fa-exclamation-triangle me-2"></i>
-              Warning! Better check yourself, you're not looking too good.
-            </div>
-            <div class="alert alert-danger" role="alert">
-              <i class="fas fa-times-circle me-2"></i>
-              Oh snap! Change a few things up and try submitting again.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Badges Section -->
+
+    <!-- List Group Section -->
     <div class="row mb-5">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-tags me-2"></i>Badges</h5>
-          </div>
-          <div class="card-body">
-            <h6>Standard Badges</h6>
-            <div class="mb-3">
-              <span class="badge bg-primary me-2">Primary</span>
-              <span class="badge bg-secondary me-2">Secondary</span>
-              <span class="badge bg-success me-2">Success</span>
-              <span class="badge bg-danger me-2">Danger</span>
-              <span class="badge bg-warning text-dark me-2">Warning</span>
-              <span class="badge bg-info me-2">Info</span>
-            </div>
-            
-            <h6>Pill Badges</h6>
-            <div>
-              <span class="badge rounded-pill bg-primary me-2">Primary</span>
-              <span class="badge rounded-pill bg-success me-2">Success</span>
-              <span class="badge rounded-pill bg-danger me-2">Danger</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-6">
+      <div class="col-md-6 mx-auto">
         <div class="card">
           <div class="card-header">
             <h5 class="mb-0"><i class="fas fa-list me-2"></i>List Group</h5>
@@ -215,6 +118,7 @@
                 <textarea class="form-control" rows="3" placeholder="Enter your message"></textarea>
               </div>
               
+                            
               <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
@@ -232,146 +136,7 @@
       </div>
     </div>
 
-    <!-- Table with Pagination Section -->
-    <div class="row mb-5">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-table me-2"></i>Table with Pagination</h5>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-striped table-hover">
-                <thead class="table-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>John Doe</td>
-                    <td>john@example.com</td>
-                    <td><span class="badge bg-primary">Admin</span></td>
-                    <td><span class="badge bg-success">Active</span></td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-primary me-1">
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-danger">
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jane Smith</td>
-                    <td>jane@example.com</td>
-                    <td><span class="badge bg-info">Editor</span></td>
-                    <td><span class="badge bg-success">Active</span></td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-primary me-1">
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-danger">
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Mike Johnson</td>
-                    <td>mike@example.com</td>
-                    <td><span class="badge bg-secondary">User</span></td>
-                    <td><span class="badge bg-warning text-dark">Pending</span></td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-primary me-1">
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-danger">
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Sarah Wilson</td>
-                    <td>sarah@example.com</td>
-                    <td><span class="badge bg-info">Editor</span></td>
-                    <td><span class="badge bg-danger">Inactive</span></td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-primary me-1">
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-danger">
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>David Brown</td>
-                    <td>david@example.com</td>
-                    <td><span class="badge bg-secondary">User</span></td>
-                    <td><span class="badge bg-success">Active</span></td>
-                    <td>
-                      <button class="btn btn-sm btn-outline-primary me-1">
-                        <i class="fas fa-edit"></i>
-                      </button>
-                      <button class="btn btn-sm btn-outline-danger">
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            
-            <!-- Pagination -->
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <div>
-                <small class="text-muted">Showing 1 to 5 of 25 entries</small>
-              </div>
-              <nav aria-label="Table pagination">
-                <ul class="pagination pagination-sm mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                      <i class="fas fa-chevron-left"></i>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">4</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">5</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <i class="fas fa-chevron-right"></i>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- Accordion Section -->
     <!-- Accordion Section -->
     <div class="row mb-5">
       <div class="col-12">
@@ -439,53 +204,7 @@
       </div>
     </div>
 
-    <!-- Button Group Section -->
-    <div class="row mb-5">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="mb-0"><i class="fas fa-layer-group me-2"></i>Button Groups</h5>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <h6>Basic Button Group</h6>
-                <div class="btn-group mb-3" role="group">
-                  <button type="button" class="btn btn-outline-primary">Left</button>
-                  <button type="button" class="btn btn-outline-primary">Middle</button>
-                  <button type="button" class="btn btn-outline-primary">Right</button>
-                </div>
-                
-                <h6>Toolbar</h6>
-                <div class="btn-toolbar mb-3" role="toolbar">
-                  <div class="btn-group me-2" role="group">
-                    <button type="button" class="btn btn-outline-secondary">1</button>
-                    <button type="button" class="btn btn-outline-secondary">2</button>
-                    <button type="button" class="btn btn-outline-secondary">3</button>
-                  </div>
-                  <div class="btn-group me-2" role="group">
-                    <button type="button" class="btn btn-outline-secondary">4</button>
-                    <button type="button" class="btn btn-outline-secondary">5</button>
-                  </div>
-                  <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-secondary">6</button>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-md-6">
-                <h6>Vertical Button Group</h6>
-                <div class="btn-group-vertical mb-3" role="group">
-                  <button type="button" class="btn btn-outline-primary">Button</button>
-                  <button type="button" class="btn btn-outline-primary">Button</button>
-                  <button type="button" class="btn btn-outline-primary">Button</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Carousel Section -->
     <div class="row mb-5">

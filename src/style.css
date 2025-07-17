@@ -14,6 +14,9 @@
   --sidebarText: #ffffff;
   --sidebarBg: #2c3e50;
   --sidebarActive: #3498db;
+  --sidebarActiveText: #ffffff;
+  --sidebarHoverText: #ffffff;
+  --activeMenuRadius: 0.5rem;
   --navbarBg: #ffffff;
   --navbarText: #333333;
 }

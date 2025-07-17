@@ -19,37 +19,6 @@
 
     <!-- Dashboard Content -->
     <div v-else>
-      <!-- Quick Actions with SweetAlert2 Demo -->
-      <div class="row mb-4">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">การแจ้งเตือนแบบต่างๆ (SweetAlert2 Demo)</h5>
-              <div class="btn-group" role="group">
-                <button class="btn btn-success" @click="showSuccessAlert">
-                  <i class="fas fa-check me-1"></i>สำเร็จ
-                </button>
-                <button class="btn btn-danger" @click="showErrorAlert">
-                  <i class="fas fa-times me-1"></i>ข้อผิดพลาด
-                </button>
-                <button class="btn btn-warning" @click="showWarningAlert">
-                  <i class="fas fa-exclamation-triangle me-1"></i>คำเตือน
-                </button>
-                <button class="btn btn-info" @click="showInfoAlert">
-                  <i class="fas fa-info me-1"></i>ข้อมูล
-                </button>
-                <button class="btn btn-primary" @click="showConfirmAlert">
-                  <i class="fas fa-question me-1"></i>ยืนยัน
-                </button>
-                <button class="btn btn-secondary" @click="showInputAlert">
-                  <i class="fas fa-edit me-1"></i>กรอกข้อมูล
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Stats Cards -->
       <div class="row mb-4">
         <StatCard v-for="stat in stats" :key="stat.title" :stat="stat" />
@@ -77,7 +46,6 @@ import ProductChart from '../components/ProductChart.vue'
 import RecentOrders from '../components/RecentOrders.vue'
 import RecentActivities from '../components/RecentActivities.vue'
 import { useDashboard } from '../composables/useDashboard'
-import { swalUtils } from '../utils/swal'
 
 const {
   stats,
@@ -87,44 +55,4 @@ const {
   error,
   loadDashboardData
 } = useDashboard()
-
-// SweetAlert2 Demo Functions
-const showSuccessAlert = () => {
-  swalUtils.success('ดำเนินการสำเร็จ!', 'ข้อมูลถูกบันทึกเรียบร้อยแล้ว')
-}
-
-const showErrorAlert = () => {
-  swalUtils.error('เกิดข้อผิดพลาด!', 'ไม่สามารถดำเนินการได้ กรุณาลองใหม่อีกครั้ง')
-}
-
-const showWarningAlert = () => {
-  swalUtils.warning('คำเตือน!', 'กรุณาตรวจสอบข้อมูลให้ครบถ้วน')
-}
-
-const showInfoAlert = () => {
-  swalUtils.info('ข้อมูล', 'นี่คือข้อมูลสำคัญที่ควรทราบ')
-}
-
-const showConfirmAlert = async () => {
-  const result = await swalUtils.confirm(
-    'ยืนยันการดำเนินการ', 
-    'คุณต้องการดำเนินการต่อหรือไม่?',
-    'ดำเนินการ',
-    'ยกเลิก'
-  )
-  
-  if (result.isConfirmed) {
-    swalUtils.success('ยืนยันแล้ว!', 'การดำเนินการเสร็จสิ้น')
-  } else {
-    swalUtils.info('ยกเลิกแล้ว', 'การดำเนินการถูกยกเลิก')
-  }
-}
-
-const showInputAlert = async () => {
-  const result = await swalUtils.input('กรอกชื่อของคุณ', 'ชื่อ-นามสกุล')
-  
-  if (result.isConfirmed && result.value) {
-    swalUtils.success('สวัสดี!', `ยินดีต้อนรับคุณ ${result.value}`)
-  }
-}
 </script>

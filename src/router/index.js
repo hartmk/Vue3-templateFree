@@ -3,6 +3,8 @@ import { useAuth } from '../composables/useAuth'
 
 // Lazy load components for better performance
 const Dashboard = () => import('../views/Dashboard.vue')
+const Buttons = () => import('../views/Buttons.vue')
+const Alerts = () => import('../views/Alerts.vue')
 const Products = () => import('../views/Products.vue')
 const ProductDetail = () => import('../views/ProductDetail.vue')
 const Orders = () => import('../views/Orders.vue')
@@ -15,6 +17,11 @@ const Profile = () => import('../views/Profile.vue')
 const Login = () => import('../views/Login.vue')
 const NotFound = () => import('../views/NotFound.vue')
 const Documentation = () => import('../views/Documentation.vue')
+const Chat = () => import('../views/Chat.vue')
+const Calendar = () => import('../views/Calendar.vue')
+const Kanban = () => import('../views/Kanban.vue')
+const Cards = () => import('../views/Cards.vue')
+const Tables = () => import('../views/Tables.vue')
 
 const routes = [
   {
@@ -38,6 +45,46 @@ const routes = [
       requiresAuth: true,
       title: 'แดชบอร์ด',
       icon: 'fas fa-tachometer-alt'
+    }
+  },
+  {
+    path: '/buttons',
+    name: 'Buttons',
+    component: Buttons,
+    meta: { 
+      requiresAuth: true,
+      title: 'Buttons & Badges',
+      icon: 'fas fa-square'
+    }
+  },
+  {
+    path: '/alerts',
+    name: 'Alerts',
+    component: Alerts,
+    meta: { 
+      requiresAuth: true,
+      title: 'Alerts',
+      icon: 'fas fa-exclamation-triangle'
+    }
+  },
+  {
+    path: '/cards',
+    name: 'Cards',
+    component: Cards,
+    meta: { 
+      requiresAuth: true,
+      title: 'Cards',
+      icon: 'fas fa-id-card'
+    }
+  },
+  {
+    path: '/bootstrap-table',
+    name: 'BootstrapTable',
+    component: Tables,
+    meta: { 
+      requiresAuth: true,
+      title: 'Bootstrap Table',
+      icon: 'fas fa-table'
     }
   },
   {
@@ -263,6 +310,39 @@ const routes = [
       title: 'Documentation',
       icon: 'fas fa-book',
       breadcrumb: 'Documentation'
+    }
+  },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: Chat,
+    meta: { 
+      requiresAuth: true,
+      title: 'Chat Application',
+      icon: 'fas fa-comments',
+      breadcrumb: 'Chat'
+    }
+  },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: Calendar,
+    meta: { 
+      requiresAuth: true,
+      title: 'Calendar',
+      icon: 'fas fa-calendar-alt',
+      breadcrumb: 'Calendar'
+    }
+  },
+  {
+    path: '/kanban',
+    name: 'Kanban',
+    component: Kanban,
+    meta: { 
+      requiresAuth: true,
+      title: 'Kanban Board',
+      icon: 'fas fa-columns',
+      breadcrumb: 'Kanban'
     }
   },
   {

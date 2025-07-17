@@ -1,7 +1,18 @@
 <template>
-  <nav class="bg-dark text-light position-fixed start-0 top-0 h-100 transition-all" 
-       :class="sidebarCollapsed ? 'sidebar-collapsed' : 'sidebar-expanded'" 
+  <nav class="bg-dark text-light position-fixed start-0 top-0 h-100 transition-all sidebar" 
+       :class="[
+         sidebarCollapsed ? 'sidebar-collapsed' : 'sidebar-expanded',
+         isMobileMenuOpen ? 'mobile-menu-open' : ''
+       ]" 
        style="z-index: 1000; box-shadow: 2px 0 10px rgba(0,0,0,0.1); overflow: hidden;">
+    
+    <!-- Mobile overlay -->
+    <div 
+      v-if="isMobileMenuOpen" 
+      class="mobile-overlay d-lg-none"
+      @click="closeMobileMenu"
+    ></div>
+    
     <div class="d-flex justify-content-between align-items-center p-3 border-bottom border-secondary" style="height: 60px; min-height: 60px;">
       <h4 v-show="!sidebarCollapsed" class="mb-0 text-light fw-semibold fs-6">Dashboard</h4>
       <button class="btn btn-outline-light btn-sm border-0" @click="toggleSidebar">
@@ -15,7 +26,7 @@
           <template v-if="!item.children">
             <router-link 
               class="nav-link d-flex align-items-center text-light py-3 px-3" 
-              :class="{ 'bg-primary': activeMenu === item.id }" 
+              :class="{ 'active-menu-item': activeMenu === item.id }" 
               :to="item.route"
               @click="setActiveMenu(item.id)"
               style="transition: all 0.3s ease; font-size: 0.9rem;"
@@ -31,7 +42,7 @@
               href="#"
               class="nav-link d-flex align-items-center justify-content-between text-light py-3 px-3"
               :class="{ 
-                'bg-primary': activeMenu === item.id || isParentActive(item)
+                'active-menu-item': activeMenu === item.id || isParentActive(item)
               }"
               @click.prevent="toggleSubmenu(item.id)"
               style="transition: all 0.3s ease; font-size: 0.9rem;"
@@ -60,7 +71,7 @@
                 <li class="nav-item" v-for="child in item.children" :key="child.id">
                   <router-link 
                     class="nav-link d-flex align-items-center text-light ps-5 py-2"
-                    :class="{ 'bg-primary': activeMenu === child.id }"
+                    :class="{ 'active-submenu-item': activeMenu === child.id }"
                     :to="child.route"
                     @click="setActiveMenu(child.id)"
                     style="font-size: 0.85rem; border-left: 2px solid transparent; margin-left: 1rem; transition: all 0.3s ease;"
@@ -84,10 +95,11 @@ import { ref, computed } from 'vue'
 const props = defineProps({
   sidebarCollapsed: Boolean,
   activeMenu: String,
-  menuItems: Array
+  menuItems: Array,
+  isMobileMenuOpen: Boolean
 })
 
-const emit = defineEmits(['toggle-sidebar', 'set-active-menu'])
+const emit = defineEmits(['toggle-sidebar', 'set-active-menu', 'close-mobile-menu'])
 
 // State for managing open submenus
 const openSubmenus = ref([])
@@ -98,6 +110,14 @@ const toggleSidebar = () => {
 
 const setActiveMenu = (menuId) => {
   emit('set-active-menu', menuId)
+  // Auto close mobile menu when menu item is selected
+  if (props.isMobileMenuOpen) {
+    emit('close-mobile-menu')
+  }
+}
+
+const closeMobileMenu = () => {
+  emit('close-mobile-menu')
 }
 
 const toggleSubmenu = (menuId) => {
@@ -133,6 +153,80 @@ watch(() => props.activeMenu, () => {
   checkActiveSubmenu()
 }, { immediate: true })
 </script>
+
+<style scoped>
+.sidebar-expanded {
+  width: 260px;
+}
+
+.sidebar-collapsed {
+  width: 70px;
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Active menu styling with CSS variables */
+.active-menu-item {
+  background-color: var(--sidebarActive, #3498db) !important;
+  color: var(--sidebarActiveText, #ffffff) !important;
+  border-radius: var(--activeMenuRadius, 0.5rem) !important;
+  margin: 0.25rem 0.5rem !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.active-submenu-item {
+  background-color: var(--sidebarActive, #3498db) !important;
+  color: var(--sidebarActiveText, #ffffff) !important;
+  border-radius: var(--activeMenuRadius, 0.5rem) !important;
+  margin: 0.125rem 1rem !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.nav-link:hover {
+  background-color: rgba(255,255,255,0.1) !important;
+  color: var(--sidebarHoverText, #ffffff) !important;
+  border-radius: var(--activeMenuRadius, 0.5rem) !important;
+  margin: 0.25rem 0.5rem !important;
+}
+
+.nav-link:hover span,
+.nav-link:hover i {
+  color: var(--sidebarHoverText, #ffffff) !important;
+}
+
+/* Submenu hover effect */
+.submenu .nav-link:hover {
+  background-color: rgba(255,255,255,0.08) !important;
+  color: var(--sidebarHoverText, #ffffff) !important;
+  border-radius: var(--activeMenuRadius, 0.5rem) !important;
+  margin: 0.125rem 1rem !important;
+}
+
+.submenu .nav-link:hover span,
+.submenu .nav-link:hover i {
+  color: var(--sidebarHoverText, #ffffff) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar-expanded,
+  .sidebar-collapsed {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+  
+  .sidebar-expanded.show,
+  .sidebar-collapsed.show {
+    transform: translateX(0);
+  }
+}
+</style>
 
 <style scoped>
 .sidebar-expanded {
@@ -177,17 +271,37 @@ watch(() => props.activeMenu, () => {
   transform: none;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .sidebar-expanded,
-  .sidebar-collapsed {
-    width: 100%;
+/* Mobile Responsive */
+@media (max-width: 770px) {
+  .sidebar {
+    width: 280px;
     transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
   
-  .sidebar-expanded.show,
-  .sidebar-collapsed.show {
-    transform: translateX(0);
+  .sidebar.mobile-menu-open {
+    transform: translateX(0) !important;
+  }
+}
+
+/* Mobile overlay */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+@media (min-width: 771px) {
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+  
+  .mobile-overlay {
+    display: none !important;
   }
 }
 </style>

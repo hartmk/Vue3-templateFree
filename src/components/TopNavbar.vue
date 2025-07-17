@@ -1,8 +1,18 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
+      <!-- Mobile menu button -->
+      <button 
+        class="btn btn-outline-secondary d-lg-none me-2" 
+        type="button"
+        @click="toggleMobileMenu"
+        aria-label="Toggle mobile menu"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      
       <div class="d-flex align-items-center">
-        <span class="fw-bold text-primary me-3 pe-3 border-end border-2">{{ appName }}</span>
+        <span class="fw-bold text-primary me-3 pe-3 border-end border-2 d-none d-md-inline">{{ appName }}</span>
         <span class="navbar-brand mb-0 h1">{{ currentPageTitle }}</span>
       </div>
       <div class="navbar-nav ms-auto d-flex flex-row align-items-center">
@@ -19,7 +29,10 @@
           </a>
           
           <!-- Notification Dropdown -->
-          <div class="dropdown-menu dropdown-menu-end p-0 shadow border-0" :class="{ show: isNotificationOpen }" style="width: 350px; max-height: 500px;">
+          <div 
+            class="dropdown-menu dropdown-menu-end p-0 shadow border-0 notification-dropdown" 
+            :class="{ show: isNotificationOpen }" 
+          >
             <div class="p-3 bg-light border-bottom d-flex justify-content-between align-items-center rounded-top">
               <h6 class="mb-0">การแจ้งเตือน</h6>
               <small class="text-muted">{{ unreadCount }} รายการใหม่</small>
@@ -84,7 +97,7 @@
             <span class="d-none d-md-inline">{{ user?.name || 'ผู้ใช้' }}</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" :class="{ show: isDropdownOpen }">
-            <li><a class="dropdown-item" href="#" @click.prevent="closeDropdown"><i class="fas fa-user me-2"></i>โปรไฟล์</a></li>
+            <li><a class="dropdown-item" href="#" @click.prevent="goToProfile"><i class="fas fa-user me-2"></i>โปรไฟล์</a></li>
             <li><a class="dropdown-item" href="#" @click.prevent="goToSettings"><i class="fas fa-cog me-2"></i>ตั้งค่า</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#" @click.prevent="handleLogout"><i class="fas fa-sign-out-alt me-2"></i>ออกจากระบบ</a></li>
@@ -105,6 +118,8 @@ const props = defineProps({
   currentPageTitle: String,
   user: Object
 })
+
+const emit = defineEmits(['toggle-mobile-menu'])
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -165,6 +180,11 @@ const unreadCount = computed(() => {
   return notifications.value.filter(n => !n.read).length
 })
 
+// Toggle mobile menu
+const toggleMobileMenu = () => {
+  emit('toggle-mobile-menu')
+}
+
 // Toggle dropdown
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value
@@ -191,6 +211,12 @@ const closeNotifications = () => {
 const goToSettings = () => {
   closeDropdown()
   router.push('/settings')
+}
+
+// Go to profile page
+const goToProfile = () => {
+  closeDropdown()
+  router.push('/profile')
 }
 
 // Mark notification as read
@@ -286,6 +312,26 @@ const handleLogout = async () => {
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease;
+}
+
+.notification-dropdown {
+  width: 350px;
+  max-height: 500px;
+  /* Prevent overflow on small screens */
+  max-width: calc(100vw - 2rem);
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 576px) {
+  .notification-dropdown {
+    width: calc(100vw - 1rem);
+    max-width: none;
+    right: 0.5rem !important;
+    left: 0.5rem !important;
+    transform: translateX(0) !important;
+  }
 }
 
 .dropdown-menu.show {

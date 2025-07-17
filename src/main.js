@@ -26,6 +26,15 @@ import './style.css'
 // Import theme configuration
 import { applyTheme, loadThemeSettings, updateThemeColors } from './config/themeConfig'
 
+// Function to customize active menu styling
+const setActiveMenuStyle = (bgColor = '#3498db', textColor = '#ffffff', radius = '0.5rem', hoverTextColor = '#ffffff') => {
+  const root = document.documentElement
+  root.style.setProperty('--sidebarActive', bgColor)
+  root.style.setProperty('--sidebarActiveText', textColor)
+  root.style.setProperty('--sidebarHoverText', hoverTextColor)
+  root.style.setProperty('--activeMenuRadius', radius)
+}
+
 // Initialize theme with saved settings and force update
 const initializeTheme = () => {
   // Clear any bad saved settings first
@@ -48,7 +57,20 @@ const initializeTheme = () => {
     root.style.setProperty('--sidebarBg', '#2c2e50ff')
     root.style.setProperty('--navbarBg', '#ffffff')
     root.style.setProperty('--sidebarActive', '#3498db')
+    root.style.setProperty('--sidebarActiveText', '#ffffff')
+    root.style.setProperty('--sidebarHoverText', '#ffffff')
+    root.style.setProperty('--activeMenuRadius', '0.5rem')
 
+    // ตัวอย่างการใช้งาน: เปลี่ยนสี active menu
+    // setActiveMenuStyle('#28a745', '#ffffff', '1rem', '#ffffff') // สีเขียว, ข้อความขาว, radius 1rem, hover ขาว
+    // setActiveMenuStyle('#dc3545', '#ffffff', '0.25rem', '#ffffff') // สีแดง, ข้อความขาว, radius 0.25rem, hover ขาว
+    // setActiveMenuStyle('#6f42c1', '#ffffff', '0.75rem', '#ffffff') // สีม่วง, ข้อความขาว, radius 0.75rem, hover ขาว
+
+    // Example: เปลี่ยนสี active menu เป็นสีเขียว
+    // root.style.setProperty('--sidebarActive', '#28a745')
+    // root.style.setProperty('--sidebarActiveText', '#ffffff')
+    // root.style.setProperty('--sidebarHoverText', '#ffffff')
+    // root.style.setProperty('--activeMenuRadius', '1rem')
 
     // root.style.setProperty('--bs-primary', '#0d6efd')
     // root.style.setProperty('--bs-secondary', '#6c757d')
@@ -61,6 +83,9 @@ const initializeTheme = () => {
     // root.style.setProperty('--sidebarBg', '#2c2e50ff')
     // root.style.setProperty('--navbarBg', '#ffffff')
     // root.style.setProperty('--sidebarActive', '#3498db')
+    // root.style.setProperty('--sidebarActiveText', '#ffffff')
+    // root.style.setProperty('--sidebarHoverText', '#ffffff')
+    // root.style.setProperty('--activeMenuRadius', '0.5rem')
   }, 100)
 }
 
