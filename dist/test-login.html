@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Test</title>
+</head>
+<body>
+    <h1>Login Test</h1>
+    <button onclick="testLogin()">Test Login</button>
+    <div id="result"></div>
+
+    <script>
+        async function testLogin() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                console.log('Starting login test...');
+                
+                const response = await fetch('/api/auth.json');
+                const data = await response.json();
+                console.log('Auth data:', data);
+                
+                const credentials = { username: 'admin', password: 'admin123' };
+                console.log('Testing with:', credentials);
+                
+                const user = data.users.find(u => 
+                    (u.username === credentials.username || u.email === credentials.username) &&
+                    u.password === credentials.password
+                );
+                
+                console.log('User found:', user);
+                
+                if (user) {
+                    resultDiv.innerHTML = `<p style="color: green">Success! Found user: ${user.name}</p>`;
+                } else {
+                    resultDiv.innerHTML = `<p style="color: red">Failed! User not found</p>`;
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `<p style="color: red">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

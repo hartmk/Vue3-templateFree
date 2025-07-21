@@ -1,0 +1,36 @@
+{
+  "activities": [
+    {
+      "id": 1,
+      "title": "ออร์เดอร์ใหม่",
+      "description": "ออร์เดอร์ #ORD-001 จากนายสมศักดิ์ รักษ์ดี",
+      "time": "5 นาทีที่แล้ว",
+      "icon": "fas fa-shopping-cart",
+      "type": "bg-primary"
+    },
+    {
+      "id": 2,
+      "title": "ลูกค้าใหม่",
+      "description": "นางสาวปิยะดา สมใจ สมัครสมาชิก",
+      "time": "15 นาทีที่แล้ว",
+      "icon": "fas fa-user",
+      "type": "bg-success"
+    },
+    {
+      "id": 3,
+      "title": "สินค้าหมด",
+      "description": "เสื้อยืดสีขาว Size M เหลือเพียง 2 ตัว",
+      "time": "1 ชั่วโมงที่แล้ว",
+      "icon": "fas fa-exclamation-triangle",
+      "type": "bg-warning"
+    },
+    {
+      "id": 4,
+      "title": "การชำระเงิน",
+      "description": "ได้รับการชำระเงิน ฿2,500 จากออร์เดอร์ #ORD-002",
+      "time": "2 ชั่วโมงที่แล้ว",
+      "icon": "fas fa-credit-card",
+      "type": "bg-info"
+    }
+  ]
+}
