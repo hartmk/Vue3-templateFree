@@ -19,7 +19,7 @@
 - ⚡ **Vite** - Fast development and optimized builds
 
 ## 🎨 Custom Theme
-# xxx
+# ZZZZ
 ### Colors
 - **Primary**: `#667eea` (Purple-blue gradient)
 - **Secondary**: `#6c757d`
